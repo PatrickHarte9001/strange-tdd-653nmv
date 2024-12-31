@@ -1,16 +1,12 @@
 import React, { ForwardedRef, forwardRef, useState } from "react";
 import User from "../types/User";
-import sortData from "../utilities/sortData";
 import { FilterSettings } from "../types/FilterSettings";
-import filterData from "../utilities/filterData";
 
 type EditUserDialogProps = {
-  // editUserDataDialog: null | React.RefObject<HTMLDialogElement>;
   editingModalUser: User;
   setEditingModalUser: React.Dispatch<React.SetStateAction<User | undefined>>;
   setMasterData: React.Dispatch<React.SetStateAction<User[]>>;
   filterSettings: FilterSettings;
-  // editingUser;
 };
 
 const validateEmail = (email: string): boolean => {
