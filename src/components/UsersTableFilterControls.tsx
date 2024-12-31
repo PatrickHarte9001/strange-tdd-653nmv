@@ -7,12 +7,6 @@ type UsersTableFilterControlsProps = {
   setOffset: React.Dispatch<React.SetStateAction<number>>;
 };
 
-/*
-For reasons unknown, some of the styles in index.css stopped being 
-applied to the buttons after adding the <Wrapper> layer, 
-with an inline-defined "reset" stylsheet (which I didn't write!)
-taking precedence. No idea.
-*/
 export const UsersTableFilterControls = ({
   filterSettings,
   setFilterSettings,

@@ -1,17 +1,12 @@
 import React, { ForwardedRef, forwardRef, useState } from "react";
 import User from "../types/User";
-import sortData from "../utilities/sortData";
 import { FilterSettings } from "../types/FilterSettings";
-import filterData from "../utilities/filterData";
 
 type EditUserDialogProps = {
-  // editUserDataDialog: null | React.RefObject<HTMLDialogElement>;
   editingModalUser: User;
   setEditingModalUser: React.Dispatch<React.SetStateAction<User | undefined>>;
-  setCopiedData: React.Dispatch<React.SetStateAction<User[]>>;
   setMasterData: React.Dispatch<React.SetStateAction<User[]>>;
   filterSettings: FilterSettings;
-  // editingUser;
 };
 
 const validateEmail = (email: string): boolean => {
@@ -25,9 +20,7 @@ const validateEmail = (email: string): boolean => {
 const EditUserDialog = ({
   editingModalUser,
   setEditingModalUser,
-  setCopiedData,
   setMasterData,
-  filterSettings,
 }: EditUserDialogProps) => {
   const [tempUser] = useState<User>(editingModalUser);
   const [nameError, setNameError] = useState<boolean>(() => {
@@ -51,7 +44,6 @@ const EditUserDialog = ({
             let index = oldMasterData.findIndex((v) => {
               return v.id === editingModalUser.id;
             });
-            debugger;
             oldMasterData[index] = {
               id: tempUser.id,
               name:
@@ -64,7 +56,6 @@ const EditUserDialog = ({
                 (formData.get("edit-modal-dialog-status") as string) ??
                 tempUser.status,
             };
-            debugger;
             return [...oldMasterData];
           });
           setEditingModalUser(undefined);
