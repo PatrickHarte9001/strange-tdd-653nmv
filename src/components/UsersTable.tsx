@@ -13,7 +13,6 @@ type UsersProps = {
   isSuccess: boolean;
   isError: boolean;
   copiedData: User[];
-  setCopiedData: React.Dispatch<React.SetStateAction<User[]>>;
   setMasterData: React.Dispatch<React.SetStateAction<User[]>>;
   filterSettings: FilterSettings;
   setFilterSettings: React.Dispatch<React.SetStateAction<FilterSettings>>;
@@ -26,7 +25,6 @@ export const UsersTable = ({
   isSuccess,
   isError,
   copiedData,
-  setCopiedData,
   setMasterData,
   filterSettings,
   setFilterSettings,
@@ -59,7 +57,6 @@ export const UsersTable = ({
         {editingModalUser !== undefined && (
           <EditUserDialog
             setEditingModalUser={setEditingModalUser}
-            setCopiedData={setCopiedData}
             setMasterData={setMasterData}
             editingModalUser={editingModalUser}
             filterSettings={filterSettings}

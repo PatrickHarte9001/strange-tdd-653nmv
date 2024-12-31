@@ -31,7 +31,6 @@ export default function FormWrapper() {
   });
 
   useEffect(() => {
-    debugger;
     if (data) {
       if (masterData.length === 0) {
         setMasterData(data);
@@ -53,7 +52,6 @@ export default function FormWrapper() {
       />
       <UsersTable
         copiedData={copiedData}
-        setCopiedData={setCopiedData}
         setMasterData={setMasterData}
         isLoading={isLoading}
         isSuccess={isSuccess}
