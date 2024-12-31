@@ -31,6 +31,7 @@ export default function FormWrapper() {
   });
 
   useEffect(() => {
+    debugger;
     if (data) {
       if (masterData.length === 0) {
         setMasterData(data);

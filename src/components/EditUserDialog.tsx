@@ -51,6 +51,7 @@ const EditUserDialog = ({
             let index = oldMasterData.findIndex((v) => {
               return v.id === editingModalUser.id;
             });
+            debugger;
             oldMasterData[index] = {
               id: tempUser.id,
               name:
@@ -63,10 +64,8 @@ const EditUserDialog = ({
                 (formData.get("edit-modal-dialog-status") as string) ??
                 tempUser.status,
             };
-            return sortData(
-              filterData(oldMasterData, filterSettings),
-              filterSettings
-            );
+            debugger;
+            return [...oldMasterData];
           });
           setEditingModalUser(undefined);
         }}
