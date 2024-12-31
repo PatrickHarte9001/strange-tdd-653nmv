@@ -4,7 +4,6 @@ import UserStatus from "../types/UserStatus";
 type UsersTableFilterControlsProps = {
   filterSettings: FilterSettings;
   setFilterSettings: React.Dispatch<React.SetStateAction<FilterSettings>>;
-  offset: number;
   setOffset: React.Dispatch<React.SetStateAction<number>>;
 };
 
@@ -17,7 +16,6 @@ taking precedence. No idea.
 export const UsersTableFilterControls = ({
   filterSettings,
   setFilterSettings,
-  offset,
   setOffset,
 }: UsersTableFilterControlsProps) => {
   const toggleFilterSettingsShow = (userStatus: UserStatus) => {
@@ -55,6 +53,7 @@ export const UsersTableFilterControls = ({
                 searchString: e.target.value,
               };
             });
+            setOffset(0);
           }}
         />
       </div>

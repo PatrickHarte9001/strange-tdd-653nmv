@@ -47,9 +47,16 @@ const UserDetails = ({
       <td className="px-4 w-32">{status}</td>
       <td className="w-8">
         <button
-          className={`p-1 mr-1 w-8 bg-light-darkened border border-1 border-dark dark:bg-light dark:bg-dark ${
-            hovered ? "visible" : "invisible"
-          }`}
+          className={`
+            p-1 mr-1 w-8
+            bg-light
+            dark:bg-dark
+            hover:bg-light-hover
+            hover:dark:bg-dark-hover
+            border border-1
+            border-dark
+            dark:border-light
+            ${hovered ? "visible" : "invisible"}`}
           onClick={() => {
             setEditingModalUser({
               id: id,

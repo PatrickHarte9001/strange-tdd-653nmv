@@ -2,12 +2,14 @@ import React, { ForwardedRef, forwardRef, useState } from "react";
 import User from "../types/User";
 import sortData from "../utilities/sortData";
 import { FilterSettings } from "../types/FilterSettings";
+import filterData from "../utilities/filterData";
 
 type EditUserDialogProps = {
   // editUserDataDialog: null | React.RefObject<HTMLDialogElement>;
   editingModalUser: User;
   setEditingModalUser: React.Dispatch<React.SetStateAction<User | undefined>>;
   setCopiedData: React.Dispatch<React.SetStateAction<User[]>>;
+  setMasterData: React.Dispatch<React.SetStateAction<User[]>>;
   filterSettings: FilterSettings;
   // editingUser;
 };
@@ -24,6 +26,7 @@ const EditUserDialog = ({
   editingModalUser,
   setEditingModalUser,
   setCopiedData,
+  setMasterData,
   filterSettings,
 }: EditUserDialogProps) => {
   const [tempUser] = useState<User>(editingModalUser);
@@ -44,11 +47,12 @@ const EditUserDialog = ({
         onSubmit={(e) => {
           e.preventDefault();
           const formData = new FormData(e.currentTarget);
-          setCopiedData((oldCopiedData) => {
-            let index = oldCopiedData.findIndex((v) => {
+          setMasterData((oldMasterData) => {
+            let index = oldMasterData.findIndex((v) => {
               return v.id === editingModalUser.id;
             });
-            oldCopiedData[index] = {
+            debugger;
+            oldMasterData[index] = {
               id: tempUser.id,
               name:
                 (formData.get("edit-modal-dialog-name") as string) ??
@@ -60,12 +64,13 @@ const EditUserDialog = ({
                 (formData.get("edit-modal-dialog-status") as string) ??
                 tempUser.status,
             };
-            return sortData(oldCopiedData, filterSettings);
+            debugger;
+            return [...oldMasterData];
           });
           setEditingModalUser(undefined);
         }}
       >
-        <h2 className="mb-6">Edit User Information</h2>
+        <h2 className="mb-8">Edit User Information</h2>
         <div
           className="mb-6 grid items-center gap-y-2 gap-x-4"
           style={{
