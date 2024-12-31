@@ -52,7 +52,8 @@ export default function FormWrapper() {
   }, [copiedData]);
 
   return (
-    <div className="w-screen max-w-screen flex flex-col min-h-screen p-4">
+    <div className="w-screen max-w-screen flex flex-col min-h-screen p-8">
+      <h1 className="mb-8">User Management</h1>
       <UsersTableFilterControls
         filterSettings={filterSettings}
         setFilterSettings={setFilterSettings}

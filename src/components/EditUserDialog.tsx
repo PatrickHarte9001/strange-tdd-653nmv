@@ -65,7 +65,7 @@ const EditUserDialog = ({
           setEditingModalUser(undefined);
         }}
       >
-        <h2 className="mb-6">Edit User Information</h2>
+        <h2 className="mb-8">Edit User Information</h2>
         <div
           className="mb-6 grid items-center gap-y-2 gap-x-4"
           style={{

@@ -57,14 +57,15 @@ body {
 }
 
 h1 {
-  font-size: 3.2rem;
-  line-height: 1.6;
+  font-size: 2.5rem;
+  line-height: 1.2;
+  font-weight: 600;
 }
 
 h2 {
-  font-size: 2.2rem;
-  line-height: 1.1;
-  margin-bottom: 1.1rem;
+  font-size: 2rem;
+  line-height: 1.2;
+  font-weight: 600;
 }
 
 button {
