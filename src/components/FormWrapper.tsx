@@ -20,6 +20,7 @@ export default function FormWrapper() {
     ["users"],
     getUsers
   );
+  const [masterData, setMasterData] = useState<User[]>([]);
   const [copiedData, setCopiedData] = useState<User[]>([]);
   const [offset, setOffset] = useState<number>(0);
   const [filterSettings, setFilterSettings] = useState<FilterSettings>({
@@ -29,27 +30,17 @@ export default function FormWrapper() {
     searchString: "",
   });
 
-  /*
-    run when the length of the relevant section of the data can change
-  */
   useEffect(() => {
     if (data) {
-      setCopiedData(sortData(filterData(data, filterSettings), filterSettings));
-    } else {
-      setCopiedData([]);
+      if (masterData.length === 0) {
+        setMasterData(data);
+      } else {
+        setCopiedData(
+          sortData(filterData(masterData, filterSettings), filterSettings)
+        );
+      }
     }
-  }, [data, filterSettings]);
-
-  /*
-    run when a User is altered
-  */
-  useEffect(() => {
-    if (copiedData) {
-      setCopiedData(sortData(copiedData, filterSettings));
-    } else {
-      setCopiedData([]);
-    }
-  }, [copiedData]);
+  }, [data, masterData, filterSettings]);
 
   return (
     <div className="w-screen max-w-screen flex flex-col min-h-screen p-8">
@@ -57,12 +48,12 @@ export default function FormWrapper() {
       <UsersTableFilterControls
         filterSettings={filterSettings}
         setFilterSettings={setFilterSettings}
-        offset={offset}
         setOffset={setOffset}
       />
       <UsersTable
         copiedData={copiedData}
         setCopiedData={setCopiedData}
+        setMasterData={setMasterData}
         isLoading={isLoading}
         isSuccess={isSuccess}
         isError={isError}

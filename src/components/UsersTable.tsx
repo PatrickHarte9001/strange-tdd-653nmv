@@ -14,6 +14,7 @@ type UsersProps = {
   isError: boolean;
   copiedData: User[];
   setCopiedData: React.Dispatch<React.SetStateAction<User[]>>;
+  setMasterData: React.Dispatch<React.SetStateAction<User[]>>;
   filterSettings: FilterSettings;
   setFilterSettings: React.Dispatch<React.SetStateAction<FilterSettings>>;
   offset: number;
@@ -26,12 +27,12 @@ export const UsersTable = ({
   isError,
   copiedData,
   setCopiedData,
+  setMasterData,
   filterSettings,
   setFilterSettings,
   offset,
   setOffset,
 }: UsersProps) => {
-  debugger;
   const [editingModalUser, setEditingModalUser] = useState<User | undefined>(
     undefined
   );
@@ -59,6 +60,7 @@ export const UsersTable = ({
           <EditUserDialog
             setEditingModalUser={setEditingModalUser}
             setCopiedData={setCopiedData}
+            setMasterData={setMasterData}
             editingModalUser={editingModalUser}
             filterSettings={filterSettings}
           />
@@ -153,7 +155,9 @@ export const UsersTable = ({
         />
       </>
     ) : (
-      <p>No results</p>
+      <div className="border border-1 dark:border-light-darkened light:border-dark-darkened flex items-center justify-center grow-[2]">
+        <p>No results</p>
+      </div>
     )
   ) : isError ? (
     <div className="border border-1 dark:border-light-darkened light:border-dark-darkened flex items-center justify-center grow-[2]">
